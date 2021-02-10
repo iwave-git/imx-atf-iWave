@@ -89,7 +89,8 @@ static void lpuart32_serial_setbrg(unsigned int base, int baudrate)
 	if (baudrate == 0)
 		panic();
 
-	sc_pm_get_clock_rate(ipc_handle, SC_R_UART_0, 2, &rate);
+	/* IWG27M: UART: LPUART4 Support for iWave platform */
+	sc_pm_get_clock_rate(ipc_handle, SC_R_UART_4, 2, &rate);
 
 	baud_diff = baudrate;
 	osr = 0;
@@ -424,14 +425,17 @@ void bl31_early_platform_setup2(u_register_t arg0, u_register_t arg1,
 		panic();
 
 #if DEBUG_CONSOLE_A53
-	sc_pm_set_resource_power_mode(ipc_handle, SC_R_UART_0, SC_PM_PW_MODE_ON);
+	/* IWG27M: UART: LPUART4 Support for iWave platform */
+	sc_pm_set_resource_power_mode(ipc_handle, SC_R_UART_4, SC_PM_PW_MODE_ON);
 	sc_pm_clock_rate_t rate = 80000000;
-	sc_pm_set_clock_rate(ipc_handle, SC_R_UART_0, 2, &rate);
-	sc_pm_clock_enable(ipc_handle, SC_R_UART_0, 2, true, false);
+	/* IWG27M: UART: LPUART4 Support for iWave platform */
+	sc_pm_set_clock_rate(ipc_handle, SC_R_UART_4, 2, &rate);
+	sc_pm_clock_enable(ipc_handle, SC_R_UART_4, 2, true, false);
 
 	/* configure UART pads */
-	sc_pad_set(ipc_handle, SC_P_UART0_RX, UART_PAD_CTRL);
-	sc_pad_set(ipc_handle, SC_P_UART0_TX, UART_PAD_CTRL);
+	/* IWG27M: UART: LPUART4 Support for iWave platform */
+	sc_pad_set(ipc_handle, SC_P_M40_GPIO0_00, UART_PAD_CTRL);
+	sc_pad_set(ipc_handle, SC_P_M40_GPIO0_01, UART_PAD_CTRL);
 
 	lpuart32_serial_init(IMX_BOOT_UART_BASE);
 #endif

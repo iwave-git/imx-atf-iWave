@@ -49,7 +49,11 @@ $(eval $(call add_define,ENABLE_CPU_DYNAMIC_RETENTION))
 ENABLE_L2_DYNAMIC_RETENTION := 1
 $(eval $(call add_define,ENABLE_L2_DYNAMIC_RETENTION))
 
-BL32_BASE		?=	0xfe000000
+ifeq (${MACHINE}, imx8qm_iwg27m)
+BL32_BASE ?= 0xbe000000
+else
+BL32_BASE ?= 0xfe000000
+endif
 $(eval $(call add_define,BL32_BASE))
 
 BL32_SIZE		?=	0x2000000
