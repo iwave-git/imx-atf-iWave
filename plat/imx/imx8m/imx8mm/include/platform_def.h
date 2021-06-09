@@ -31,6 +31,9 @@
 #define PLAT_WAIT_RET_STATE		U(1)
 #define PLAT_STOP_OFF_STATE		U(3)
 
+/* IWG34S: Support For IWG34S Board */
+#define CONFIG_IWG34S
+
 #define BL31_BASE			U(0x920000)
 #define BL31_LIMIT			U(0x940000)
 
@@ -51,7 +54,12 @@
 
 #define HAB_RVT_BASE			U(0x00000900) /* HAB_RVT for i.MX8MM */
 
+#ifdef CONFIG_IWG34S
+/* IWG34S: UART4: Cortex A53 debug UART Base Address */
+#define IMX_BOOT_UART_BASE             U(0x30a60000)
+#else
 #define IMX_BOOT_UART_BASE		U(0x30890000)
+#endif
 #define IMX_BOOT_UART_CLK_IN_HZ		24000000 /* Select 24MHz oscillator */
 
 #define PLAT_CRASH_UART_BASE		IMX_BOOT_UART_BASE

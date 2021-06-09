@@ -57,10 +57,16 @@ static const struct imx_rdc_cfg rdc[] = {
 	/* Master domain assignment */
 	RDC_MDAn(RDC_MDA_M4, DID1),
 
+#ifdef CONFIG_IWG34S
+	/* IWG34S:UART4: Cortex A53 debug UART */
+	RDC_PDAPn(RDC_PDAP_UART4, D0R | D0W),
+	/* IWG34S:UART2: Cortex M4 debug UART */
+	RDC_PDAPn(RDC_PDAP_UART2, D1R | D1W | D0R | D0W),
+#else
 	/* peripherals domain permission */
 	RDC_PDAPn(RDC_PDAP_UART4, D1R | D1W),
 	RDC_PDAPn(RDC_PDAP_UART2, D0R | D0W),
-
+#endif
 	/* memory region */
 
 	/* Sentinel */

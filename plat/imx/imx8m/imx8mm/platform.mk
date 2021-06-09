@@ -57,7 +57,11 @@ ERRATA_A53_835769	:=	1
 ERRATA_A53_843419	:=	1
 ERRATA_A53_855873	:=	1
 
+ifeq (${MACHINE}, imx8mm-iwg34s)
+BL32_BASE 		?=	0x7e000000
+else
 BL32_BASE		?=	0xbe000000
+endif
 $(eval $(call add_define,BL32_BASE))
 
 BL32_SIZE		?=	0x2000000
