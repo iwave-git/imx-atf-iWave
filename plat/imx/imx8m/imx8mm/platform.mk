@@ -57,7 +57,7 @@ ERRATA_A53_835769	:=	1
 ERRATA_A53_843419	:=	1
 ERRATA_A53_855873	:=	1
 
-ifeq (${MACHINE}, imx8mm-iwg34s)
+ifeq (${MACHINE}, imx8mm_iwg34s)
 BL32_BASE 		?=	0x7e000000
 else
 BL32_BASE		?=	0xbe000000
