@@ -36,6 +36,9 @@
 #define PLAT_WAIT_RET_STATE		U(1)
 #define PLAT_STOP_OFF_STATE		U(3)
 
+/* IWG37: Support For IWG37 Board */
+#define CONFIG_IWG37
+
 #define PLAT_PRI_BITS			U(3)
 #define PLAT_SDEI_CRITICAL_PRI		0x10
 #define PLAT_SDEI_NORMAL_PRI		0x20
