@@ -31,6 +31,9 @@
 #define PLAT_WAIT_RET_STATE		U(1)
 #define PLAT_STOP_OFF_STATE		U(3)
 
+/* IWG34: Support For IWG34 Board */
+#define CONFIG_IWG34
+
 #define BL31_BASE			U(0x920000)
 #define BL31_LIMIT			U(0x940000)
 
